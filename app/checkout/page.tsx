@@ -11,7 +11,7 @@ export default function Checkout() {
   const [pay, setPay] = useState("upi");
   const ship = subtotal >= 3999 ? 0 : 149;
   if (!lines.length) return <div className="mx-auto max-w-xl px-5 py-24 text-center"><h1 className="text-4xl">Nothing to check out</h1><Link href="/shop" className="btn mt-6">Shop all perfumes</Link></div>;
-  const submit = (e: React.FormEvent) => { e.preventDefault(); const id = "MA" + Math.floor(100000 + Math.random() * 900000); clear(); router.push(`/checkout/success?order=${id}`); };
+  const submit = (e: React.FormEvent) => { e.preventDefault(); const id = "PD" + Math.floor(100000 + Math.random() * 900000); clear(); router.push(`/checkout/success?order=${id}`); };
   return (
     <form onSubmit={submit} className="mx-auto max-w-6xl px-5 py-12">
       <h1 className="text-5xl">Checkout</h1>

@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import Bottle from "@/components/Bottle";
+import ProductImage from "@/components/ProductImage";
 import { useCart } from "@/components/CartContext";
 import { getProduct, money } from "@/lib/products";
 export default function Cart() {
@@ -14,7 +14,7 @@ export default function Cart() {
         <ul className="divide-y divide-line">
           {lines.map((l) => { const p = getProduct(l.slug)!; return (
             <li key={l.slug} className="flex gap-5 py-5">
-              <Link href={`/product/${p.slug}`} className="h-28 w-24 shrink-0 rounded-xl bg-white p-2"><Bottle c1={p.c1} c2={p.c2} id={`cart-${p.slug}`} className="h-full w-full" /></Link>
+              <Link href={`/product/${p.slug}`} className="relative h-28 w-24 shrink-0 overflow-hidden rounded-xl bg-white"><ProductImage p={p} /></Link>
               <div className="flex-1"><div className="flex justify-between gap-3"><div><h3 className="serif text-xl">{p.name}</h3><p className="text-sm text-ink/60">{p.size}</p></div><p className="font-semibold">{money(p.price * l.qty)}</p></div>
                 <div className="mt-4 flex items-center gap-5 text-sm">
                   <div className="flex items-center rounded-full border border-line bg-white"><button aria-label="Decrease" className="px-3 py-1.5" onClick={() => setQty(l.slug, l.qty - 1)}>−</button><span className="w-5 text-center">{l.qty}</span><button aria-label="Increase" className="px-3 py-1.5" onClick={() => setQty(l.slug, l.qty + 1)}>+</button></div>
